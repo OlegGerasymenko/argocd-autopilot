@@ -17,5 +17,10 @@ resources:
 - https://github.com/argoproj/argo-cd/manifests/ha/cluster-install?ref=v2.4.6
 
 
-patchesStrategicMerge:
-  - patch-notifications-controller.yaml
+patches:
+  - path: patch-notifications-controller.yaml
+    target:
+      group: apps
+      kind: Deployment
+      name: argocd-notifications-controller
+      version: v1
