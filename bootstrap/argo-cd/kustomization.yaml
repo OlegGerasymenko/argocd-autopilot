@@ -15,3 +15,7 @@ kind: Kustomization
 namespace: argocd
 resources:
 - https://github.com/argoproj/argo-cd/manifests/ha/cluster-install?ref=v2.4.6
+
+
+patchesStrategicMerge:
+  - patch-notifications-controller.yaml
