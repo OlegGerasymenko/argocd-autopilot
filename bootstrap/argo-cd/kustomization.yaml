@@ -32,7 +32,6 @@ patches:
           requests:
             cpu: 100m
             memory: 128Mi
-
   - target:
       group: apps
       version: v1
@@ -57,7 +56,21 @@ patches:
           requests:
             cpu: 250m
             memory: 64Mi
-
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: argocd-notifications-controller
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/resources
+        value:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            memory: 64Mi
   - target:
       group: apps
       version: v1
@@ -67,23 +80,27 @@ patches:
       - op: add
         path: /spec/template/spec/containers/0/resources
         value:
-          requests:
-            memory: 512Mi
           limits:
-            memory: 1Gi
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            memory: 64Mi
   - target:
       group: apps
       version: v1
-      kind: StatefulSet
-      name: argocd-application-controller
+      kind: Deployment
+      name: argocd-server
     patch: |-
       - op: add
         path: /spec/template/spec/containers/0/resources
         value:
-          requests:
-            memory: 512Mi
           limits:
-            memory: 1Gi
+            cpu: '1'
+            memory: 2G
+          requests:
+            cpu: 100m
+            memory: 128Mi
 
   - path: argocd-server-deploy-command.yaml
     target:
