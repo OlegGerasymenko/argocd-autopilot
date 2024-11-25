@@ -117,7 +117,30 @@ patches:
           requests:
             cpu: 100m
             memory: 128Mi
-
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: argocd-redis-ha-haproxy
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/resources
+        value:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            memory: 64Mi
+      - op: add
+        path: /spec/template/spec/initContainers/0/resources
+        value:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            memory: 64Mi
   - path: argocd-server-deploy-command.yaml
     target:
       group: apps
