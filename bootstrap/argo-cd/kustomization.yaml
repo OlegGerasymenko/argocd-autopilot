@@ -15,7 +15,6 @@ kind: Kustomization
 namespace: argocd
 resources:
 - https://github.com/argoproj/argo-cd/manifests/ha/cluster-install?ref=v2.4.6
-- argocd-image-updater.yaml
 
 patches:
   - target:
