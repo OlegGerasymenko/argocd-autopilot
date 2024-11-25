@@ -13,6 +13,22 @@ configMapGenerator:
   name: argocd-cm
 kind: Kustomization
 namespace: argocd
+images:
+  - name: ghcr.io/dexidp/dex
+    newName: varisacr.azurecr.io/compliant/dex-2.30.2
+    newTag: latest
+  - name: quay.io/argoproj/argocd
+    newName: varisacr.azurecr.io/compliant/argocd-2.4.6
+    newTag: latest
+  - name: redis
+    newName: varisacr.azurecr.io/compliant/redis-7.0.0-alpine
+    newTag: latest
+  - name: haproxy
+    newName: varisacr.azurecr.io/compliant/haproxy-2.0.25-alpine
+    newTag: latest
+  - name: quay.io/argoprojlabs/argocd-image-updater
+    newName: varisacr.azurecr.io/compliant/argocd-image-updater-0.12.0
+    newTag: latest
 resources:
 - https://github.com/argoproj/argo-cd/manifests/ha/cluster-install?ref=v2.4.6
 
