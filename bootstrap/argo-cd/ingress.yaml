@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: argocd-ing
+  annotations:
+    kubernetes.io/ingress.class: nginx-int
+spec:
+  ingressClassName: nginx-int
+  rules:
+    - host: argocd.dev.govaris-internal.com
+      http:
+        paths:
+          - backend:
+              serviceName: argocd-server
+              servicePort: 80
+            path: /
+            pathType: Prefix
