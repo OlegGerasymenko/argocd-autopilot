@@ -17,9 +17,10 @@ spec:
       template:
         metadata: {}
         spec:
-          source:
           destination: {}
           project: ""
+          source:
+            repoURL: ""
   syncPolicy:
     preserveResourcesOnDeletion: true
   template:
