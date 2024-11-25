@@ -32,21 +32,6 @@ patches:
           requests:
             cpu: 100m
             memory: 128Mi
-  - target:
-      group: apps
-      version: v1
-      kind: Deployment
-      name: argocd-dex-server
-    patch: |-
-      - op: add
-        path: /spec/template/spec/containers/0/resources
-        value:
-          limits:
-          cpu: 500m
-          memory: 512Mi
-          requests:
-            cpu: 250m
-            memory: 64Mi
 
   - target:
       group: apps
