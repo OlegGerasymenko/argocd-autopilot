@@ -17,6 +17,7 @@ spec:
       template:
         metadata: {}
         spec:
+          source: ""
           destination: {}
           project: ""
   syncPolicy:
