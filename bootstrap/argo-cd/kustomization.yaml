@@ -30,7 +30,7 @@ images:
     newName: varisacr.azurecr.io/compliant/argocd-image-updater-0.12.0
     newTag: latest
 resources:
-- https://github.com/OlegGerasymenko/argocd/manifests/ha/cluster-install\?ref\=local
+- https://github.com/argoproj/argo-cd/manifests/ha/cluster-install?ref=local
 
 patches:
   - target:
